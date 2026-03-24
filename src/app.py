@@ -1,70 +1,80 @@
 import flet
 from flet import ThemeMode, Text, TextField, OutlinedButton, Column, CrossAxisAlignment
 from flet.controls.border_radius import horizontal
+from datetime import datetime
 
 
 def main(page: flet.Page):
-    # Configurações
+    #CONFIGURAÇÕES
     page.title = "Primeira APP"
     page.theme_mode = ThemeMode.DARK
     page.window.width = 400
     page.window.height = 700
 
-    # Funções
-    def salvar_nome():
-        text.value = f"Bom Dia {input_nome.value}+ {input_sobrenome.value}"
+    #FUNÇÕES
+    def nome():
+        text.value = f"Bom Dia {input_nome.value} {input_sobrenome.value}"
         page.update()
 
-    def salvar():
+    def numero():
         n1 = int(input_numero.value)
         if n1 % 2 == 0:
-            text.value = f"O número {n1} é par"
+            text_numero.value = f"O número {n1} é par"
             page.update()
         else:
             text.value = f"O número {n1} é impar"
             page.update()
 
+
     def nascimento():
         verif_idade = int(input_nascimento.value)
-        idade = 2026 - verif_idade
+        idade = datetime.now().year - verif_idade
         if idade >= 18:
-            text.value = f"ele é maior de idade, a idade é {idade} anos"
+            text_nascimento.value = f"É maior de idade, a idade é {idade} anos"
             page.update()
         else:
-            text.value = f"ele é menor de idade,  a idade é {idade} anos"
+            text_nascimento.value = f"É menor de idade,  a idade é {idade} anos"
             page.update()
 
 
 
-    #Componentes
+    #COMPONENTES
     text = Text(" ")
     input_nome = TextField(label="Nome")
     input_sobrenome = TextField(label="Sobrenome")
-    input_numero = TextField(label="Digite um número")
+    btn_salvar = OutlinedButton("Salvar", on_click=nome)
+
+    text_numero = Text(" ")
+    input_numero = TextField(label="Digite um número", hint_text="Verifique se é par ou ímpar")
+    btn_salvar_dois = OutlinedButton("Verificar", on_click=numero)
+
+    text_nascimento = Text(" ")
     input_nascimento = TextField(label="Digite o ano de nascimento")
-    btn_salvar = OutlinedButton("Salvar", on_click=salvar_nome)
-    btn_salvar_dois = OutlinedButton("Salvar", on_click=salvar)
     btn_salvar_tres = OutlinedButton("Salvar", on_click=nascimento)
 
-    # Contrução da tela
+
+
+    #CONSTRUÇÃO DA TELA
     page.add(
         Column(
             [
+                text,
                 input_nome,
                 input_sobrenome,
                 btn_salvar,
+
+                text_numero,
                 input_numero,
                 btn_salvar_dois,
+
+                text_nascimento,
                 input_nascimento,
-                btn_salvar_tres,
-                text
+                btn_salvar_tres
+
             ],
             width=400,
             horizontal_alignment=CrossAxisAlignment.CENTER
         )
-
-
-
     )
 
 
