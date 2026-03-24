@@ -1,6 +1,6 @@
 import flet
 from flet import ThemeMode, Text, TextField, OutlinedButton, Column, CrossAxisAlignment, Container, Colors, FontWeight, \
-    Alignment
+    Alignment, Event, ElevatedButton
 from flet.controls.border_radius import horizontal
 from datetime import datetime
 
@@ -43,15 +43,15 @@ def main(page: flet.Page):
     text = Text(" ")
     input_nome = TextField(label="Nome")
     input_sobrenome = TextField(label="Sobrenome")
-    btn_salvar = OutlinedButton("Salvar", on_click=nome)
+    btn_salvar = ElevatedButton("Salvar", on_click=nome, color=Colors.PURPLE_200)
 
     text_numero = Text(" ")
     input_numero = TextField(label="Digite um número", hint_text="Verifique se é par ou ímpar")
-    btn_salvar_dois = OutlinedButton("Verificar", on_click=numero)
+    btn_salvar_dois = ElevatedButton("Verificar", on_click=numero, color=Colors.PURPLE_200)
 
     text_nascimento = Text(" ")
     input_nascimento = TextField(label="Digite o ano de nascimento", hint_text="Ex: 2009")
-    btn_salvar_tres = OutlinedButton("Salvar", on_click=nascimento)
+    btn_salvar_tres = ElevatedButton("Salvar", on_click=nascimento, color=Colors.PURPLE_200)
 
 
 
@@ -62,7 +62,7 @@ def main(page: flet.Page):
                 Container(
                     Column(
                         [
-                            Text("Atividade 1", weight=FontWeight.BOLD, size=18),
+                            Text("Atividade 1", weight=FontWeight.BOLD, size=18, color=Colors.BLACK),
                             text,
                             input_nome,
                             input_sobrenome,
@@ -79,7 +79,7 @@ def main(page: flet.Page):
                 Container(
                     Column(
                         [
-                            Text("Atividade 2", weight=FontWeight.BOLD, size=18),
+                            Text("Atividade 2", weight=FontWeight.BOLD, size=18, color=Colors.BLACK),
                             text_numero,
                             input_numero,
                             btn_salvar_dois,
@@ -95,7 +95,7 @@ def main(page: flet.Page):
                 Container(
                     Column(
                         [
-                            Text("Atividade 3", weight=FontWeight.BOLD, size=18),
+                            Text("Atividade 3", weight=FontWeight.BOLD, size=18, color=Colors.BLACK),
                             text_nascimento,
                             input_nascimento,
                             btn_salvar_tres
