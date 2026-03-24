@@ -1,5 +1,6 @@
 import flet
-from flet import ThemeMode, Text, TextField, OutlinedButton, Column, CrossAxisAlignment
+from flet import ThemeMode, Text, TextField, OutlinedButton, Column, CrossAxisAlignment, Container, Colors, FontWeight, \
+    Alignment
 from flet.controls.border_radius import horizontal
 from datetime import datetime
 
@@ -49,7 +50,7 @@ def main(page: flet.Page):
     btn_salvar_dois = OutlinedButton("Verificar", on_click=numero)
 
     text_nascimento = Text(" ")
-    input_nascimento = TextField(label="Digite o ano de nascimento", hint_text="Ex: 2008")
+    input_nascimento = TextField(label="Digite o ano de nascimento", hint_text="Ex: 2009")
     btn_salvar_tres = OutlinedButton("Salvar", on_click=nascimento)
 
 
@@ -58,18 +59,58 @@ def main(page: flet.Page):
     page.add(
         Column(
             [
-                text,
-                input_nome,
-                input_sobrenome,
-                btn_salvar,
+                Container(
+                    Column(
+                        [
+                            Text("Atividade 1", weight=FontWeight.BOLD, size=18),
+                            text,
+                            input_nome,
+                            input_sobrenome,
+                            btn_salvar,
+                        ],
+                        horizontal_alignment=CrossAxisAlignment.CENTER,
+                    ),
+                    bgcolor=Colors.PURPLE_800,
+                    padding=10,
+                    border_radius=5,
+                    width=400
+                ),
 
-                text_numero,
-                input_numero,
-                btn_salvar_dois,
+                Container(
+                    Column(
+                        [
+                            Text("Atividade 2", weight=FontWeight.BOLD, size=18),
+                            text_numero,
+                            input_numero,
+                            btn_salvar_dois,
+                        ],
+                        horizontal_alignment=CrossAxisAlignment.CENTER,
+                    ),
+                    bgcolor=Colors.PURPLE_600,
+                    padding=10,
+                    border_radius=5,
+                    width=400
+                ),
 
-                text_nascimento,
-                input_nascimento,
-                btn_salvar_tres
+                Container(
+                    Column(
+                        [
+                            Text("Atividade 3", weight=FontWeight.BOLD, size=18),
+                            text_nascimento,
+                            input_nascimento,
+                            btn_salvar_tres
+                        ],
+                        horizontal_alignment=CrossAxisAlignment.CENTER,
+                    ),
+                    bgcolor=Colors.PURPLE_400,
+                    padding=10,
+                    border_radius=5,
+                    width=400
+                ),
+
+
+
+
 
             ],
             width=400,
@@ -78,4 +119,4 @@ def main(page: flet.Page):
     )
 
 
-flet.app(main)
+flet.run(main)
