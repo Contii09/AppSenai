@@ -49,7 +49,7 @@ def main(page: flet.Page):
     btn_salvar_dois = OutlinedButton("Verificar", on_click=numero)
 
     text_nascimento = Text(" ")
-    input_nascimento = TextField(label="Digite o ano de nascimento")
+    input_nascimento = TextField(label="Digite o ano de nascimento", hint_text="Ex: 2008")
     btn_salvar_tres = OutlinedButton("Salvar", on_click=nascimento)
 
 
