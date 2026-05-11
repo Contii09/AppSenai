@@ -1,13 +1,13 @@
 import requests
 
-base_url = "https://dragonball-api.com/api"
+base_url = "https://viacep.com.br/ws/"
 
 # Criar as funcoes que irao pegar os dados da api
 # nome da funcao deve ter o prefixo get, post ou put
 
-def get_planetas():
+def get_enderecos(cep):
     # 1 - Definir o endpoint que vai ser consumido
-    url = f"{base_url}/planets"
+    url = f"{base_url}{cep}/json/"
 
     # 2 - Fazer a requisição (pedindo os dados)
     dados = requests.get(url)
@@ -15,16 +15,5 @@ def get_planetas():
     # 3 - Retornar os dados
     return dados.json()
 
-print(get_planetas())
-
-
-
-def get_personagens():
-    url = f"{base_url}/characters?limit=58"
-
-    dados = requests.get(url)
-
-    return dados.json()
-print(get_personagens())
 
 # TODO: Fazer a requisição para pegar a lista de personagens
